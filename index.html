@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCraft Academy Nigeria - Learn to Code Online</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-blue: #2563eb;
+            --accent-orange: #f97316;
+            --dark-blue: #1e40af;
+            --light-gray: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(37, 99, 235, 0.8), rgba(30, 64, 175, 0.8)), 
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .lead {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .btn-cta {
+            background: var(--accent-orange);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-cta:hover {
+            background: #ea580c;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(249, 115, 22, 0.3);
+        }
+
+        /* Section Styling */
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: var(--accent-orange);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Skills Cards */
+        .skill-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--primary-blue);
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .skill-card h4 {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-card li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: bold;
+        }
+
+        /* Benefits Cards */
+        .benefit-card {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+        }
+
+        /* Process Steps */
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-blue);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            right: -50%;
+            width: 100%;
+            height: 2px;
+            background: var(--accent-orange);
+            z-index: -1;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        /* Testimonials */
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--accent-orange);
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-family: serif;
+        }
+
+        /* FAQ */
+        .accordion-button {
+            background: var(--light-gray);
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background: var(--primary-blue);
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--accent-orange);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-orange);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .lead {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .process-step::after {
+                display: none;
+            }
+        }
+
+        /* Background Sections */
+        .bg-light-section {
+            background: var(--light-gray);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: rgba(37, 99, 235, 0.95);">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#home">
+                <i class="bi bi-code-slash me-2"></i>Codira Academy
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#courses">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h1>Codira Academy Nigeria</h1>
+                    <p class="lead">Transform Your Future with In-Demand Tech Skills. Learn Programming, Web Development, and Data Analysis from Industry Experts.</p>
+                    <a href="#about" class="btn btn-cta btn-lg">Start Your Journey Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section id="about" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">About Codira Academy</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h3 class="mb-4" style="color: var(--primary-blue);">Our Mission</h3>
+                    <p class="lead">We're on a mission to democratize tech education in Nigeria by providing world-class programming courses that are accessible, practical, and career-focused.</p>
+                    <p>At Codira Academy, we believe that everyone deserves the opportunity to learn valuable tech skills regardless of their background. Our comprehensive curriculum is designed by industry professionals and tailored specifically for the Nigerian tech ecosystem.</p>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="mb-4" style="color: var(--primary-blue);">What Makes Us Different</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-warning me-2"></i><strong>100% Practical Learning:</strong> Build real projects from day one</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-warning me-2"></i><strong>Nigerian Context:</strong> Learn with local examples and case studies</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-warning me-2"></i><strong>Affordable Pricing:</strong> Quality education that won't break the bank</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-warning me-2"></i><strong>Career Support:</strong> From portfolio building to job placement assistance</li>
+                        <li class="mb-3"><i class="bi bi-check-circle-fill text-warning me-2"></i><strong>Flexible Learning:</strong> Study at your own pace, anytime, anywhere</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Learn Section -->
+    <section id="courses" class="section-padding bg-light-section">
+        <div class="container">
+            <h2 class="section-title">What You'll Learn</h2>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="skill-card">
+                        <h4><i class="bi bi-code me-2"></i>Programming Foundations</h4>
+                        <ul>
+                            <li>HTML5 & Semantic Markup</li>
+                            <li>CSS3 & Modern Styling</li>
+                            <li>JavaScript ES6+ Fundamentals</li>
+                            <li>Programming Logic & Problem Solving</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="skill-card">
+                        <h4><i class="bi bi-laptop me-2"></i>Frontend Development</h4>
+                        <ul>
+                            <li>React.js & Component Architecture</li>
+                            <li>Bootstrap & Responsive Design</li>
+                            <li>Modern CSS (Flexbox, Grid)</li>
+                            <li>State Management & Hooks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="skill-card">
+                        <h4><i class="bi bi-server me-2"></i>Backend Development</h4>
+                        <ul>
+                            <li>Python Programming</li>
+                            <li>Django Web Framework</li>
+                            <li>RESTful APIs & JSON</li>
+                            <li>Database Design & SQL</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="skill-card">
+                        <h4><i class="bi bi-phone me-2"></i>Mobile Development</h4>
+                        <ul>
+                            <li>Flutter Cross-Platform Development</li>
+                            <li>Dart Programming Language</li>
+                            <li>Firebase Integration</li>
+                            <li>App Store Deployment</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="skill-card">
+                        <h4><i class="bi bi-graph-up me-2"></i>Data Analysis</h4>
+                        <ul>
+                            <li>Advanced Excel & Spreadsheets</li>
+                            <li>SQL for Data Analysis</li>
+                            <li>Python for Data Science</li>
+                            <li>Data Visualization & Reporting</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="skill-card">
+                        <h4><i class="bi bi-briefcase me-2"></i>Career & Freelancing</h4>
+                        <ul>
+                            <li>Git & GitHub Version Control</li>
+                            <li>Portfolio Development</li>
+                            <li>LinkedIn Optimization</li>
+                            <li>Freelancing & Job Applications</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Why Choose Codira Academy</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-tools"></i>
+                        </div>
+                        <h4>Practical Projects</h4>
+                        <p>Build real-world applications and websites that you can showcase to employers. Every lesson includes hands-on coding exercises.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <h4>Expert Mentorship</h4>
+                        <p>Get guidance from experienced developers working in top Nigerian and international tech companies.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        <h4>Affordable Pricing</h4>
+                        <p>Quality tech education at prices that work for Nigerian students. Flexible payment plans available.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-award"></i>
+                        </div>
+                        <h4>Industry Certificates</h4>
+                        <p>Earn recognized certificates upon completion that you can add to your LinkedIn profile and resume.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-compass"></i>
+                        </div>
+                        <h4>Career Guidance</h4>
+                        <p>From resume writing to interview preparation, we help you land your first tech job or freelance clients.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <h4>Flexible Schedule</h4>
+                        <p>Learn at your own pace with 24/7 access to course materials. Perfect for working professionals and students.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section-padding bg-light">
+    <div class="container text-center">
+        <h2 class="section-title mb-5">How It Works</h2>
+        <div class="row g-4 justify-content-center">
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="process-step shadow-sm p-3 h-100">
+            <div class="step-number">1</div>
+            <h5 class="mt-3">Register</h5>
+            <p>Sign up and choose your learning path</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="process-step shadow-sm p-3 h-100">
+            <div class="step-number">2</div>
+            <h5 class="mt-3">Learn</h5>
+            <p>Follow structured lessons and tutorials</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="process-step shadow-sm p-3 h-100">
+            <div class="step-number">3</div>
+            <h5 class="mt-3">Build</h5>
+            <p>Create real projects and applications</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="process-step shadow-sm p-3 h-100">
+            <div class="step-number">4</div>
+            <h5 class="mt-3">Feedback</h5>
+            <p>Get expert review and guidance</p>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="process-step shadow-sm p-3 h-100">
+            <div class="step-number">5</div>
+            <h5 class="mt-3">Graduate</h5>
+            <p>Earn certificate and launch career</p>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-padding">
+        <div class="container">
+            <h2 class="section-title">What Our Students Say</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p>"Codira Academy changed my life! I went from knowing nothing about programming to landing a frontend developer job in just 6 months."</p>
+                        <div class="mt-3">
+                            <strong>Adaora Okafor</strong><br>
+                            <small class="text-muted">Frontend Developer, Lagos</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p>"The practical approach and mentorship made all the difference. I'm now earning ₦500k monthly as a freelance web developer."</p>
+                        <div class="mt-3">
+                            <strong>Chukwudi Eze</strong><br>
+                            <small class="text-muted">Freelance Developer, Abuja</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="testimonial-card">
+                        <p>"Best investment I ever made! The data analysis course helped me transition from banking to tech. Highly recommended!"</p>
+                        <div class="mt-3">
+                            <strong>Fatima Abdullahi</strong><br>
+                            <small class="text-muted">Data Analyst, Kano</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section-padding bg-light-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Do I need any prior programming experience?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    No prior experience is required! Our courses are designed for complete beginners. We start with the basics and gradually build up your skills step by step.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    How long does it take to complete a course?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Course duration varies depending on your pace and the program you choose. Most students complete our full-stack program in 4-6 months studying 10-15 hours per week.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    What kind of support do you provide?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We provide comprehensive support including live mentorship sessions, code reviews, career guidance, resume assistance, and access to our active student community on WhatsApp and Discord.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    Are the certificates recognized by employers?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! Our certificates are recognized by leading tech companies in Nigeria. More importantly, the practical projects in your portfolio will demonstrate your skills to potential employers.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                                    Do you offer payment plans?
+                                </button>
+                            </h2>
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes, we offer flexible payment plans to make our courses accessible to everyone. You can pay in installments over 3-6 months. Contact us to discuss options that work for your budget.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                                    Can I learn while working full-time?
+                                </button>
+                            </h2>
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Our courses are designed for busy professionals. With 24/7 access to materials and flexible scheduling, you can learn at your own pace during evenings and weekends.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-telephone"></i>
+                        </div>
+                        <h4>Call Us</h4>
+                        <p>Ready to start your coding journey?</p>
+                        <a href="tel:+2348053220095" class="btn btn-outline-primary">+234 805 322 0095</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-whatsapp"></i>
+                        </div>
+                        <h4>WhatsApp</h4>
+                        <p>Chat with us instantly</p>
+                        <a href="https://wa.me/2348053220095?text=Hi, I'm interested in learning to code!" class="btn btn-outline-success">Message Us</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+                        <h4>Email</h4>
+                        <p>Send us your questions</p>
+                        <a href="mailto:info@codecraftacademy.ng" class="btn btn-outline-primary">info@codecraftacademy.ng</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Codira Academy Nigeria. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Smooth Scrolling -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(37, 99, 235, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(37, 99, 235, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
